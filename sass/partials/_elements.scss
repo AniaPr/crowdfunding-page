@@ -1,0 +1,46 @@
+/* Buttons */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  border: 0px;
+  border-radius: 10rem;
+  color: $color-light;
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  font-family: $font-text;
+  font-size: 0.9rem;
+}
+
+.btn-one {
+  background: $color-main-light;
+  padding: 2% 5%;
+}
+
+.btn-one:hover {
+  background: $color-main-dark;
+}
+
+.btn-bookmark {
+  padding: 0;
+  background-color: $color-light-gray;
+}
+
+.btn-bookmark span {
+  padding: 0 16px 0 8px;
+}
+
+/* Icons */
+.fa-bookmark {
+  background-color: $color-dark-gray;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,192 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: hsl(187, 39%, 91%);
+  font-family: "League Spartan", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  max-width: 1440px;
+}
+
+header {
+  background-image: url("../images/image-hero-desktop.jpg");
+  background-size: cover;
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+}
+
+nav {
+  display: flex;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  position: absolute;
+  top: 60%;
+}
+
+h1,
+h2,
+h3 {
+  color: black;
+}
+
+p {
+  color: grey;
+  margin-top: 0;
+}
+
+.container {
+  max-width: 70%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  padding: 25px 0;
+  border-radius: 5px;
+  position: relative;
+}
+
+section {
+  max-width: 70%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  border: 0px;
+  border-radius: 10rem;
+  color: #fff;
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.btn-one {
+  background: hsl(176, 85%, 34%);
+  padding: 2% 5%;
+}
+
+.btn-one:hover {
+  background: hsl(176, 100%, 18%);
+}
+
+.btn-bookmark {
+  padding: 0;
+  background-color: hsl(0, 0%, 64%);
+}
+
+.btn-bookmark span {
+  padding: 0 16px 0 8px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-bookmark {
+  background-color: hsl(0, 1%, 34%);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  position: absolute;
+  top: -20%;
+  left: 40%;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+}
+
+div .stats:nth-child(even) {
+  border-right: 4px solid red;
+  border-left: 4px solid red;
+}
+
+.item {
+  margin: 2%;
+}
+
+.cards:last-child {
+  filter: blur(1px);
+}
+
+.card {
+  border: 2px solid #b6b2b2;
+  padding: 15px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/*# sourceMappingURL=style.css.map */

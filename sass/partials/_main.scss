@@ -1,0 +1,74 @@
+main {
+  position: absolute;
+  top: 60%;
+}
+
+section {
+  max-width: 70%;
+  background-color: $color-light;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: -20%;
+  left: 40%;
+}
+.stats {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.elem {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+}
+
+.elem:nth-child(2) {
+  border-right: 1px solid $color-light-gray;
+  border-left: 1px solid $color-light-gray;
+}
+
+.progress-bar {
+  width: 88%;
+  margin: auto;
+  border-radius: 20px;
+  background: $color-light-gray;
+}
+.bar {
+  background: $color-main-dark;
+  width: 70%;
+  border-radius: inherit;
+}
+
+.options {
+  text-align: left;
+}
+
+.card {
+  border: px solid #b6b2b2;
+  padding: 15px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

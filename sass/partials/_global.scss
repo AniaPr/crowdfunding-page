@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: hsl(187, 39%, 91%);
+  font-family: $font-text;
+  font-size: $base-size;
+  color: $color-light;
+  max-width: 1440px;
+}
+
+.container {
+  max-width: 70%;
+  background-color: $color-light;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  padding: 25px 0;
+  border-radius: 5px;
+  position: relative;
+}
