@@ -1,32 +1,28 @@
 main {
-  position: absolute;
-  top: 60%;
+  position: relative;
+  top: -3rem;
 }
 
 section {
   max-width: 70%;
   background-color: $color-light;
-  display: flex;
-  flex-direction: column;
   text-align: center;
   margin: auto;
   border-radius: 5px;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 36px;
+}
+
+section:first-child {
+  padding-top: 0;
 }
 
 .logo {
-  position: absolute;
-  top: -20%;
-  left: 40%;
+  position: relative;
+  top: -1.5rem;
 }
 .stats {
   display: flex;
-  flex-direction: row;
-  text-align: left;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .elem {
@@ -34,7 +30,8 @@ section {
   display: flex;
   flex-direction: column;
   flex: 1;
-  text-align: center;
+  text-align: left;
+  position: relative;
 }
 
 .elem:nth-child(2) {
@@ -43,11 +40,14 @@ section {
 }
 
 .progress-bar {
-  width: 88%;
+  width: 100%;
+  height: 12px;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 10px;
   background: $color-light-gray;
+  display: flex;
 }
+
 .bar {
   background: $color-main-dark;
   width: 70%;
@@ -59,10 +59,33 @@ section {
 }
 
 .card {
-  border: px solid #b6b2b2;
+  border: 1px solid $color-light-gray;
   padding: 15px;
-  margin-top: 15px;
-  text-align: left;
+  margin-bottom: 16px;
+  border-radius: inherit;
+}
+
+.card .box p {
+  color: $color-main-light;
+}
+.unavailable {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+}
+
+.amount span:nth-child(1) {
+  color: black;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.amount span:nth-child(2) {
+  color: $color-light-gray;
 }
 
 .attribution {

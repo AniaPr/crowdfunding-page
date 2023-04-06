@@ -6,5 +6,6 @@ h3 {
 
 p {
   color: $color-light-gray;
-  margin-top: 0;
+  display: flex;
+  align-items: center;
 }
