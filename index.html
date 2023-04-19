@@ -31,7 +31,7 @@
             strain.
         </p>
         <div class="box">
-          <button class="button btn-one">Back this project</button>
+          <button class="button btn-one back">Back this project</button>
           <button type='button'class="button btn-bookmark" id="bookmark">
             <i class="fa-solid fa-bookmark" id="icon"></i>
             <span id="text">Bookmark</span>
@@ -72,77 +72,97 @@
           simplicity of design creates extra desk space below your computer to
           allow notepads, pens, and USB sticks to be stored under the stand.
         </p>
-
-        <div class="option"></div>
-        <script id="template-option" type="text/x-handlebars-template">
-          <div class="card">
-            <div class="box">
-              <h3>{{title}}</h3>
-              <p> Pledge ${{donation}} or more</p>
-            </div>
-            <p> {{description}}</p>
-            <div class="box">
-              <div class="amount">
-                <span>{{amount}}</span>
-                <span>left</span>
-              </div>
-              <button class="button btn-one">Select Reward</button>
-            </div>
-          </div>
-        </script>
-
+        <div class="products"></div>
       </section>
-      <section>
-       
       
+      <div class="overlay">
+        <div class="popup">
+          <div class="popup-content">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+            <div class="back">
+              <h2>Back this project</h2>
+              <p> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+            </div>
+            <div class="card">
+              <div class="box">
+                <div class="info">
+                  <input type="radio" name="product" class="radio-input">
+                  <h4>Pledge with no reward</h4>
+                </div>
+              </div>
+              <p> Choose to support
+                us without a reward if you simply believe in our project. As a backer,
+                you will be signed up to receive product updates via email.</p>
+              <div class="support">
+                <p>Enter your pledge</p>
+                <div class="box">
+                  <input type="number" min="5" step="1" class="pledge">
+                  <button class="button btn-one continue" type="submit">Continue</button>
+                </div>
+              </div>
+            </div>
+            <div class="container"></div>
+          </div>
+        </div>
+      </div>
 
-        <!-- Selection modal start -->
-
-        Back this project Want to support us in bringing Mastercraft Bamboo
-        Monitor Riser out in the world? Pledge with no reward Choose to support
-        us without a reward if you simply believe in our project. As a backer,
-        you will be signed up to receive product updates via email. Bamboo Stand
-        Pledge $25 or more You get an ergonomic stand made of natural bamboo.
-        You've helped us launch our promotional campaign, and you’ll be added to
-        a special Backer member list. 101 left
-
-        <!-- Selected pledge start -->
-        Enter your pledge $25 Continue
-        <!-- Selected pledge end -->
-
-        Black Edition Stand Pledge $75 or more You get a Black Special Edition
-        computer stand and a personal thank you. You’ll be added to our Backer
-        member list. Shipping is included. 64 left
-
-        <!-- Selected pledge start -->
-        Enter your pledge $75 Continue
-        <!-- Selected pledge end -->
-
-        Mahogany Special Edition Pledge $200 or more You get two Special Edition
-        Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be
-        added to our Backer member list. Shipping is included. 0 left
-
-        <!-- Selected pledge  start -->
-        Enter your pledge $200 Continue
-        <!-- Selected pledge end -->
-
-        <!-- Selection modal end -->
-
-        <!-- Success modal start -->
-        <div class="thanks">
-          <span>img</span>
+      <div class="overlay thanks">
+        <div class="popup">
+          <span></span>
           <p>Thanks for your support! Your pledge brings us one step closer to
           sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an
           email once our campaign is completed.</p>
-          <button> Got it!</button>
+          <button class="button btn-one" id="ok">Got it!</button>
         </div>
-
-        <!-- Success modal end -->
-      </section>
+      </div>
     </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <script src="./js/data.js"></script>
-  <script src="./js/script.js"></script>
+    <script id="template-product" type="text/x-handlebars-template">
+      <div class="card">
+        <div class="box">
+          <h3>{{title}}</h3>
+          <p> Pledge ${{donation}} or more</p>
+        </div>
+        <p> {{description}}</p>
+        <div class="box">
+          <div class="amount">
+            <span>{{amount}}</span>
+            <span>left</span>
+          </div>
+          <button class="button btn-one back">Select Reward</button>
+        </div>
+      </div>
+    </script>
+
+    <script id="template-popup" type="text/x-handlebars-template">
+      <div class="card">
+        <div class="box">
+          <div class="info">
+            <input type="radio" name="product" class="radio-input">
+            <h4>{{title}}</h4>
+            <p>Pledge ${{donation}} or more</p>
+          </div>
+          <div class="amount">
+            <span>{{amount}}</span>
+            <span>left</span>
+          </div>
+        </div>
+        <p>{{description}}</p>
+        <div class="support">
+          <p>Enter your pledge</p>
+          <div class="box">
+            <div class="donation">
+              <span class="currency">$</span>
+              <input type="number" min="20" step="1" class="pledge" placeholder={{donation}}>
+            </div>
+            <button type="submit" class="button btn-one continue">Continue</button>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="./js/data.js" type="module"></script>
+    <script src="./js/script.js" type="module"></script>
   </body>
 </html>

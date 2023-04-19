@@ -1,0 +1,84 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  top: 0;
+  visibility: hidden;
+  z-index: 1;
+  &.active {
+    visibility: visible;
+  }
+}
+
+.thanks {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  top: 0;
+  visibility: hidden;
+  z-index: 5;
+  &.active {
+    visibility: visible;
+  }
+}
+
+.popup {
+  height: 400px;
+  max-width: 70%;
+  position: relative;
+  background: white;
+  margin: auto;
+  overflow: auto;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+}
+
+span:first-child {
+  color: black;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+span:nth-child(2) {
+  color: $color-light-gray;
+}
+
+.support {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-top: 1px solid $color-light-gray;
+  display: none;
+  &.show {
+    display: flex;
+  }
+}
+
+.pledge {
+  position: relative;
+  padding: 6%;
+  border-color: $color-main-light;
+  border-radius: 10rem;
+  width: 40%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.currency {
+  position: absolute;
+}

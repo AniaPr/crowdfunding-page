@@ -4,7 +4,7 @@ main {
 }
 
 section {
-  max-width: 70%;
+  max-width: 55%;
   background-color: $color-light;
   text-align: center;
   margin: auto;
@@ -59,14 +59,20 @@ section:first-child {
 }
 
 .card {
-  border: 1px solid $color-light-gray;
-  padding: 15px;
+  border: 2px solid $color-light-gray;
   margin-bottom: 16px;
-  border-radius: inherit;
+  border-radius: 5px;
+  &.active {
+    border-color: $color-main-light;
+  }
 }
 
 .card .box p {
   color: $color-main-light;
+}
+
+.card p {
+  padding: 0 15px;
 }
 .unavailable {
   opacity: 0.5;
@@ -86,12 +92,4 @@ section:first-child {
 
 .amount span:nth-child(2) {
   color: $color-light-gray;
-}
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
 }

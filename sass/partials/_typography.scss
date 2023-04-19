@@ -1,7 +1,13 @@
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: hsl(0, 11%, 2%);
+}
+
+h4:hover {
+  cursor: pointer;
+  color: $color-main-dark;
 }
 
 p {

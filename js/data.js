@@ -1,6 +1,6 @@
-const dataSource = {};
+export const dataSource = {};
 
-dataSource.options = [
+dataSource.products = [
   {
     id: 1,
     title: 'Bamboo Stand',
