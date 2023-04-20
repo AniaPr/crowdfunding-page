@@ -31,7 +31,7 @@
             strain.
         </p>
         <div class="box">
-          <button class="button btn-one back">Back this project</button>
+          <button class="button btn-one" id="back">Back this project</button>
           <button type='button'class="button btn-bookmark" id="bookmark">
             <i class="fa-solid fa-bookmark" id="icon"></i>
             <span id="text">Bookmark</span>
@@ -83,24 +83,6 @@
               <h2>Back this project</h2>
               <p> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
             </div>
-            <div class="card">
-              <div class="box">
-                <div class="info">
-                  <input type="radio" name="product" class="radio-input">
-                  <h4>Pledge with no reward</h4>
-                </div>
-              </div>
-              <p> Choose to support
-                us without a reward if you simply believe in our project. As a backer,
-                you will be signed up to receive product updates via email.</p>
-              <div class="support">
-                <p>Enter your pledge</p>
-                <div class="box">
-                  <input type="number" min="5" step="1" class="pledge">
-                  <button class="button btn-one continue" type="submit">Continue</button>
-                </div>
-              </div>
-            </div>
             <div class="container"></div>
           </div>
         </div>
@@ -118,33 +100,39 @@
     </main>
 
     <script id="template-product" type="text/x-handlebars-template">
-      <div class="card">
-        <div class="box">
-          <h3>{{title}}</h3>
-          <p> Pledge ${{donation}} or more</p>
-        </div>
-        <p> {{description}}</p>
-        <div class="box">
-          <div class="amount">
-            <span>{{amount}}</span>
-            <span>left</span>
+      {{#if donation}}
+        <div class="card" id="{{id}}">
+          <div class="box">
+            <h3>{{title}}</h3>
+            <p> Pledge ${{donation}} or more</p>
           </div>
-          <button class="button btn-one back">Select Reward</button>
+          <p> {{description}}</p>
+          <div class="box">
+            <div class="amount">
+              <span>{{amount}}</span>
+              <span>left</span>
+            </div>
+            <button class="button btn-one">Select Reward</button>
+          </div>
         </div>
-      </div>
+      {{/if}}
     </script>
 
     <script id="template-popup" type="text/x-handlebars-template">
-      <div class="card">
+      <div class="card" id="{{id}}">
         <div class="box">
           <div class="info">
             <input type="radio" name="product" class="radio-input">
             <h4>{{title}}</h4>
-            <p>Pledge ${{donation}} or more</p>
+            {{#if donation}}
+              <p>Pledge ${{donation}} or more</p>
+            {{/if}}
           </div>
           <div class="amount">
             <span>{{amount}}</span>
-            <span>left</span>
+              {{#if amount}}
+                <span>left</span>
+              {{/if}}
           </div>
         </div>
         <p>{{description}}</p>

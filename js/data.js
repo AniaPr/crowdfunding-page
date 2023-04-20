@@ -2,6 +2,11 @@ export const dataSource = {};
 
 dataSource.products = [
   {
+    title: 'Pledge with no reward',
+    description:
+      ' Choose to supportus without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.',
+  },
+  {
     id: 1,
     title: 'Bamboo Stand',
     donation: 25,

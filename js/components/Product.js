@@ -31,10 +31,11 @@ class Product {
     thisProduct.amountWrapper = document.querySelectorAll(
       '.amount span:first-child'
     );
-    thisProduct.radioInputs = document.querySelectorAll('.radio-input');
-    thisProduct.cards = document.querySelectorAll('.card');
+    thisProduct.radioInput = document.querySelector('.radio-input');
+    thisProduct.allCards = document.querySelectorAll('.card');
+    thisProduct.popupCards = document.querySelectorAll('.container .card');
     thisProduct.overlay = document.querySelector('.overlay');
-    thisProduct.buttonsBackAndSelect = document.querySelectorAll('.back');
+    thisProduct.buttonBack = document.getElementById('back');
     thisProduct.popups = document.querySelectorAll('.popup');
     thisProduct.thanks = document.querySelector('.thanks');
     thisProduct.buttonGotIt = document.getElementById('ok');
@@ -50,6 +51,7 @@ class Product {
 
     thisProduct.data.forEach((product) => {
       const payload = {
+        id: product.id,
         title: product.title,
         donation: product.donation,
         description: product.description,
@@ -67,26 +69,36 @@ class Product {
   initAction() {
     const thisProduct = this;
 
-    thisProduct.buttonsBackAndSelect.forEach((button) => {
-      button.addEventListener('click', () => {
-        thisProduct.overlay.classList.add('active');
+    thisProduct.buttonBack.addEventListener('click', () => {
+      thisProduct.overlay.classList.add('active');
+      thisProduct.popupCards.forEach((card) => {
+        card.classList.remove('active');
       });
+      thisProduct.radioInput.closest('.card').classList.add('active');
+      thisProduct.activeProduct();
     });
 
-    thisProduct.cards.forEach((card) => {
+    thisProduct.allCards.forEach((card) => {
       card.addEventListener('click', (e) => {
+        if (e.target.nodeName === 'BUTTON') {
+          thisProduct.popupCards.forEach((card) => {
+            card.classList.remove('active');
+          });
+          thisProduct.overlay.classList.add('active');
+          for (let elem of thisProduct.popupCards) {
+            if (elem.id === card.id) {
+              elem.classList.add('active');
+              thisProduct.activeProduct();
+            } else elem.classList.remove('active');
+          }
+        }
+
         if (e.target.className === 'radio-input') {
-          thisProduct.cards.forEach((card) => {
+          thisProduct.popupCards.forEach((card) => {
             card.classList.remove('active');
           });
           card.classList.add('active');
-
-          for (let show of thisProduct.support) {
-            const parent = show.closest('.card');
-            if (parent.classList.contains('active')) {
-              show.classList.add('show');
-            } else show.classList.remove('show');
-          }
+          thisProduct.activeProduct();
         }
       });
     });
@@ -95,20 +107,32 @@ class Product {
       popup.addEventListener('click', (event) => {
         if (event.target.classList.contains('fa-xmark')) {
           thisProduct.overlay.classList.remove('active');
+        } else if (event.target.classList.contains('continue')) {
+          thisProduct.overlay.classList.remove('active');
+          thisProduct.thanks.classList.add('active');
         } else if (event.target === thisProduct.buttonGotIt) {
           thisProduct.thanks.classList.remove('active');
           thisProduct.overlay.classList.remove('active');
         }
       });
     });
+  }
 
-    thisProduct.buttonsContinue.forEach((buttonContinue) => {
-      buttonContinue.addEventListener('click', (event) => {
-        if (event.target === buttonContinue) {
-          thisProduct.overlay.classList.remove('active');
-          thisProduct.thanks.classList.add('active');
+  activeProduct() {
+    const thisProduct = this;
+
+    thisProduct.popupCards.forEach((card) => {
+      const input = card.querySelector('.radio-input');
+      if (card.classList.contains('active')) {
+        input.checked = true;
+        console.log(input.checked);
+        for (let show of thisProduct.support) {
+          const parent = show.closest('.card');
+          if (parent.classList.contains('active')) {
+            show.classList.add('show');
+          } else show.classList.remove('show');
         }
-      });
+      }
     });
   }
 
@@ -118,7 +142,12 @@ class Product {
     for (const amount of thisProduct.amountWrapper) {
       if (amount.innerHTML === '0') {
         const parent = amount.closest('.card');
+        const input = parent.querySelector('.radio-input');
         const button = parent.querySelector('.button');
+
+        if (input != null) {
+          input.disabled = true;
+        }
 
         button.innerHTML = 'Out of stock';
         parent.classList.add('unavailable');
