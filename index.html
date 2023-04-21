@@ -90,8 +90,9 @@
 
       <div class="overlay thanks">
         <div class="popup">
-          <span></span>
-          <p>Thanks for your support! Your pledge brings us one step closer to
+          <span><i class="fa-solid fa-check"></i></span>
+          <p>Thanks for your support!</p>
+          <p>Your pledge brings us one step closer to
           sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an
           email once our campaign is completed.</p>
           <button class="button btn-one" id="ok">Got it!</button>
@@ -122,8 +123,8 @@
       <div class="card" id="{{id}}">
         <div class="box">
           <div class="info">
-            <input type="radio" name="product" class="radio-input">
-            <h4>{{title}}</h4>
+            <input type="radio" name="product" class="radio-input" id="{{title}}">
+            <label for="{{title}}"><h4>{{title}}</h4></label>
             {{#if donation}}
               <p>Pledge ${{donation}} or more</p>
             {{/if}}
@@ -139,10 +140,14 @@
         <div class="support">
           <p>Enter your pledge</p>
           <div class="box">
-            <div class="donation">
-              <span class="currency">$</span>
-              <input type="number" min="20" step="1" class="pledge" placeholder={{donation}}>
-            </div>
+            <span class="currency">$</span>
+            <input type="number" 
+            {{#if donation}}
+            min="{{donation}}" 
+            {{else}}
+            min="1"
+            {{/if}} 
+            step="1" class="pledge" placeholder={{donation}}>
             <button type="submit" class="button btn-one continue">Continue</button>
           </div>
         </div>

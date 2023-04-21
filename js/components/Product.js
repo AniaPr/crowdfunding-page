@@ -71,11 +71,11 @@ class Product {
 
     thisProduct.buttonBack.addEventListener('click', () => {
       thisProduct.overlay.classList.add('active');
-      thisProduct.popupCards.forEach((card) => {
+      /* thisProduct.popupCards.forEach((card) => {
         card.classList.remove('active');
       });
       thisProduct.radioInput.closest('.card').classList.add('active');
-      thisProduct.activeProduct();
+      thisProduct.activeProduct(); */
     });
 
     thisProduct.allCards.forEach((card) => {
@@ -125,7 +125,6 @@ class Product {
       const input = card.querySelector('.radio-input');
       if (card.classList.contains('active')) {
         input.checked = true;
-        console.log(input.checked);
         for (let show of thisProduct.support) {
           const parent = show.closest('.card');
           if (parent.classList.contains('active')) {

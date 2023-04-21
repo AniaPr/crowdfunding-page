@@ -4,7 +4,8 @@ main {
 }
 
 section {
-  max-width: 55%;
+  width: 70%;
+  max-width: 600px;
   background-color: $color-light;
   text-align: center;
   margin: auto;
@@ -69,10 +70,17 @@ section:first-child {
 
 .card .box p {
   color: $color-main-light;
+  padding-left: 18px;
 }
 
-.card p {
-  padding: 0 15px;
+.products .card p {
+  padding: 0 18px;
+  margin: 0;
+}
+
+.container .card > p {
+  padding: 0 18px 18px;
+  margin: 0 0 16px 33px;
 }
 .unavailable {
   opacity: 0.5;
@@ -86,8 +94,9 @@ section:first-child {
 
 .amount span:nth-child(1) {
   color: black;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 700;
+  padding-right: 7%;
 }
 
 .amount span:nth-child(2) {
