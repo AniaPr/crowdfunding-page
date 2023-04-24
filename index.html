@@ -31,7 +31,7 @@
             strain.
         </p>
         <div class="box">
-          <button class="button btn-one" id="back">Back this project</button>
+          <button class="button btn-one back">Back this project</button>
           <button type='button'class="button btn-bookmark" id="bookmark">
             <i class="fa-solid fa-bookmark" id="icon"></i>
             <span id="text">Bookmark</span>
@@ -42,15 +42,16 @@
       <section>
         <div class="stats">
           <div class="elem">
-            <h2>$89,914</h2>
+            <span>$</span>
+            <div class="money">89,914</div>
             <p>of $100,000 backed</p>
           </div>
           <div class="elem">
-            <h2>5,007</h2>
+            <div class="backers">5,999</div>
             <p>total backers</p>
           </div>
           <div class="elem">
-            <h2>56</h2>
+            <div class="days">56</div>
             <p>days left</p>
           </div>
         </div>
@@ -75,11 +76,11 @@
         <div class="products"></div>
       </section>
       
-      <div class="overlay">
+      <div class="overlay back-project">
         <div class="popup">
           <div class="popup-content">
             <i class="fa-sharp fa-solid fa-xmark"></i>
-            <div class="back">
+            <div>
               <h2>Back this project</h2>
               <p> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
             </div>
@@ -113,7 +114,7 @@
               <span>{{amount}}</span>
               <span>left</span>
             </div>
-            <button class="button btn-one">Select Reward</button>
+            <button class="button btn-one back">Select Reward</button>
           </div>
         </div>
       {{/if}}

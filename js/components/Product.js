@@ -18,6 +18,8 @@ class Product {
     thisProduct.getElements();
     thisProduct.initAction();
     thisProduct.disabledProduct();
+    thisProduct.actionContinue();
+    thisProduct.activeProduct();
   }
 
   initData() {
@@ -31,16 +33,25 @@ class Product {
     thisProduct.amountWrapper = document.querySelectorAll(
       '.amount span:first-child'
     );
-    thisProduct.radioInput = document.querySelector('.radio-input');
-    thisProduct.allCards = document.querySelectorAll('.card');
     thisProduct.popupCards = document.querySelectorAll('.container .card');
-    thisProduct.overlay = document.querySelector('.overlay');
-    thisProduct.buttonBack = document.getElementById('back');
+    thisProduct.backThisProject = document.querySelector('.back-project');
+
+    thisProduct.buttonsBack = document.querySelectorAll('.back');
+
     thisProduct.popups = document.querySelectorAll('.popup');
     thisProduct.thanks = document.querySelector('.thanks');
     thisProduct.buttonGotIt = document.getElementById('ok');
     thisProduct.buttonsContinue = document.querySelectorAll('.continue');
     thisProduct.support = document.querySelectorAll('.support');
+    thisProduct.backersAmount = document.querySelector('.backers');
+  }
+
+  totalBackers() {
+    const thisProduct = this;
+
+    const change = thisProduct.backersAmount.innerHTML.replace(',', '');
+    const newValue = parseFloat(change) + 1;
+    thisProduct.backersAmount.innerHTML = newValue.toLocaleString('en-US');
   }
 
   render() {
@@ -69,52 +80,60 @@ class Product {
   initAction() {
     const thisProduct = this;
 
-    thisProduct.buttonBack.addEventListener('click', () => {
-      thisProduct.overlay.classList.add('active');
-      /* thisProduct.popupCards.forEach((card) => {
-        card.classList.remove('active');
-      });
-      thisProduct.radioInput.closest('.card').classList.add('active');
-      thisProduct.activeProduct(); */
-    });
+    thisProduct.buttonsBack.forEach((button) => {
+      button.addEventListener('click', () => {
+        thisProduct.backThisProject.classList.add('active');
+        const card = button.closest('.card');
 
-    thisProduct.allCards.forEach((card) => {
-      card.addEventListener('click', (e) => {
-        if (e.target.nodeName === 'BUTTON') {
-          thisProduct.popupCards.forEach((card) => {
-            card.classList.remove('active');
-          });
-          thisProduct.overlay.classList.add('active');
-          for (let elem of thisProduct.popupCards) {
-            if (elem.id === card.id) {
-              elem.classList.add('active');
-              thisProduct.activeProduct();
-            } else elem.classList.remove('active');
-          }
-        }
-
-        if (e.target.className === 'radio-input') {
-          thisProduct.popupCards.forEach((card) => {
-            card.classList.remove('active');
-          });
-          card.classList.add('active');
-          thisProduct.activeProduct();
-        }
+        thisProduct.popupCards.forEach((elem) => {
+          if (elem.id === card.id) {
+            elem.classList.add('active');
+            const input = elem.querySelector('.radio-input');
+            input.checked = true;
+            if (elem.classList.contains('active')) {
+              const support = elem.querySelector('.support');
+              support.classList.add('show');
+            }
+          } else elem.classList.remove('active');
+        });
       });
     });
 
     thisProduct.popups.forEach((popup) => {
       popup.addEventListener('click', (event) => {
         if (event.target.classList.contains('fa-xmark')) {
-          thisProduct.overlay.classList.remove('active');
-        } else if (event.target.classList.contains('continue')) {
-          thisProduct.overlay.classList.remove('active');
-          thisProduct.thanks.classList.add('active');
+          thisProduct.backThisProject.classList.remove('active');
+          thisProduct.removeActiveClass();
         } else if (event.target === thisProduct.buttonGotIt) {
           thisProduct.thanks.classList.remove('active');
-          thisProduct.overlay.classList.remove('active');
+          thisProduct.backThisProject.classList.remove('active');
+          thisProduct.removeActiveClass();
         }
       });
+    });
+  }
+
+  actionContinue() {
+    const thisProduct = this;
+
+    document.querySelectorAll('.continue').forEach((elem) => {
+      elem.addEventListener('click', () => {
+        thisProduct.backThisProject.classList.remove('active');
+        thisProduct.thanks.classList.add('active');
+        thisProduct.totalBackers();
+      });
+    });
+  }
+
+  removeActiveClass() {
+    const thisProduct = this;
+
+    thisProduct.popupCards.forEach((card) => {
+      card.classList.remove('active');
+      const support = card.querySelector('.support');
+      support.classList.remove('show');
+      const input = card.querySelector('.radio-input');
+      input.checked = false;
     });
   }
 
@@ -122,16 +141,21 @@ class Product {
     const thisProduct = this;
 
     thisProduct.popupCards.forEach((card) => {
-      const input = card.querySelector('.radio-input');
-      if (card.classList.contains('active')) {
-        input.checked = true;
-        for (let show of thisProduct.support) {
-          const parent = show.closest('.card');
-          if (parent.classList.contains('active')) {
-            show.classList.add('show');
-          } else show.classList.remove('show');
+      card.addEventListener('click', () => {
+        for (let card of thisProduct.popupCards) {
+          card.classList.remove('active');
         }
-      }
+        const input = card.querySelector('.radio-input');
+        if (input.checked) {
+          card.classList.add('active');
+          for (let show of thisProduct.support) {
+            const parent = show.closest('.card');
+            if (parent.classList.contains('active')) {
+              show.classList.add('show');
+            } else show.classList.remove('show');
+          }
+        }
+      });
     });
   }
 
