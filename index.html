@@ -43,7 +43,7 @@
         <div class="stats">
           <div class="elem">
             <span>$</span>
-            <div class="money">89,914</div>
+            <div class="money">81,370</div>
             <p>of $100,000 backed</p>
           </div>
           <div class="elem">
@@ -55,8 +55,8 @@
             <p>days left</p>
           </div>
         </div>
-        <div class="progress-bar">
-          <div class="bar"></div>
+        <div class="bar">
+          <div class="progress-bar"></div>
         </div>
       </section>
 
@@ -145,10 +145,12 @@
             <input type="number" 
             {{#if donation}}
             min="{{donation}}" 
+            placeholder={{donation}}
             {{else}}
             min="1"
+            placeholder="1"
             {{/if}} 
-            step="1" class="pledge" placeholder={{donation}}>
+            step="1" class="pledge">
             <button type="submit" class="button btn-one continue">Continue</button>
           </div>
         </div>

@@ -20,6 +20,7 @@ class Product {
     thisProduct.disabledProduct();
     thisProduct.actionContinue();
     thisProduct.activeProduct();
+    thisProduct.progressBarAction();
   }
 
   initData() {
@@ -43,15 +44,17 @@ class Product {
     thisProduct.buttonGotIt = document.getElementById('ok');
     thisProduct.buttonsContinue = document.querySelectorAll('.continue');
     thisProduct.support = document.querySelectorAll('.support');
-    thisProduct.backersAmount = document.querySelector('.backers');
+    thisProduct.backers = document.querySelector('.backers');
+    thisProduct.totalAmount = document.querySelector('.money');
+    thisProduct.progressBar = document.querySelector('.progress-bar');
   }
 
   totalBackers() {
     const thisProduct = this;
 
-    const change = thisProduct.backersAmount.innerHTML.replace(',', '');
+    const change = thisProduct.backers.innerHTML.replace(',', '');
     const newValue = parseFloat(change) + 1;
-    thisProduct.backersAmount.innerHTML = newValue.toLocaleString('en-US');
+    thisProduct.backers.innerHTML = newValue.toLocaleString('en-US');
   }
 
   render() {
@@ -108,6 +111,7 @@ class Product {
           thisProduct.thanks.classList.remove('active');
           thisProduct.backThisProject.classList.remove('active');
           thisProduct.removeActiveClass();
+          thisProduct.progressBarAction();
         }
       });
     });
@@ -116,13 +120,50 @@ class Product {
   actionContinue() {
     const thisProduct = this;
 
-    document.querySelectorAll('.continue').forEach((elem) => {
+    thisProduct.buttonsContinue.forEach((elem) => {
       elem.addEventListener('click', () => {
-        thisProduct.backThisProject.classList.remove('active');
-        thisProduct.thanks.classList.add('active');
-        thisProduct.totalBackers();
+        let sum = parseFloat(
+          thisProduct.totalAmount.innerHTML.replace(',', '')
+        );
+        let input = elem.closest('.box').querySelector('input');
+        let newValue = 0;
+        let placeholder = parseInt(input.placeholder);
+        let value = parseInt(input.value);
+
+        if (value < placeholder || value === 0 || isNaN(value)) {
+          alert(`Wrong value. Minimum amount is ${placeholder}$.`);
+          input.value = placeholder;
+        } else if (value >= placeholder) {
+          newValue = value;
+          thisProduct.backThisProject.classList.remove('active');
+          thisProduct.thanks.classList.add('active');
+          thisProduct.totalBackers();
+        }
+
+        sum += newValue;
+        thisProduct.totalAmount.innerHTML = (sum / 1000)
+          .toFixed(3)
+          .replace('.', ',');
       });
     });
+  }
+
+  progressBarAction() {
+    const thisProduct = this;
+
+    let bar = parseFloat(thisProduct.totalAmount.innerHTML);
+    let width = 1;
+
+    const progress = () => {
+      if (width >= bar) {
+        clearInterval(id);
+      } else {
+        width++;
+        thisProduct.progressBar.style.width = width + '%';
+      }
+    };
+
+    const id = setInterval(progress, 10);
   }
 
   removeActiveClass() {
