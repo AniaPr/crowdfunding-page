@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png" />
     <title>Frontend Mentor | Crowdfunding product page</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
@@ -19,20 +27,31 @@
           <li><a href="#">Discover</a></li>
           <li><a href="#">Get started</a></li>
         </ul>
+        <i class="fa-solid fa-bars"></i>
+        <div class="overlay mobile-menu">
+          <i class="fa-sharp fa-solid fa-xmark"></i>
+
+          <ul class="popup">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Get started</a></li>
+          </ul>
+        </div>
       </nav>
     </header>
 
     <main>
       <section>
-        <span class="logo"><img src="./images/logo-mastercraft.svg" alt="logo"></span>
+        <span class="logo"
+          ><img src="./images/logo-mastercraft.svg" alt="logo"
+        /></span>
         <h1>Mastercraft Bamboo Monitor Riser</h1>
         <p>
-            A beautiful & handcrafted monitor stand to reduce neck and eye
-            strain.
+          A beautiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
         <div class="box">
           <button class="button btn-one back">Back this project</button>
-          <button type='button'class="button btn-bookmark" id="bookmark">
+          <button type="button" class="button btn-bookmark" id="bookmark">
             <i class="fa-solid fa-bookmark" id="icon"></i>
             <span id="text">Bookmark</span>
           </button>
@@ -42,8 +61,10 @@
       <section>
         <div class="stats">
           <div class="elem">
-            <span>$</span>
-            <div class="money">81,370</div>
+            <div class="money">
+              <span>$</span>
+              <div id="money">81,370</div>
+            </div>
             <p>of $100,000 backed</p>
           </div>
           <div class="elem">
@@ -68,21 +89,27 @@
           Placing your monitor at eye level has the potential to improve your
           posture and make you more comfortable while at work, helping you stay
           focused on the task at hand.
-        </p></br>
-        <p>Featuring artisan craftsmanship, the
-          simplicity of design creates extra desk space below your computer to
-          allow notepads, pens, and USB sticks to be stored under the stand.
+        </p>
+        <p>
+          Featuring artisan craftsmanship, the simplicity of design creates
+          extra desk space below your computer to allow notepads, pens, and USB
+          sticks to be stored under the stand.
         </p>
         <div class="products"></div>
       </section>
-      
+
       <div class="overlay back-project">
         <div class="popup">
           <div class="popup-content">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
+            <div class="icon">
+              <i class="fa-sharp fa-solid fa-xmark"></i>
+            </div>
             <div>
               <h2>Back this project</h2>
-              <p> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+              <p>
+                Want to support us in bringing Mastercraft Bamboo Monitor Riser
+                out in the world?
+              </p>
             </div>
             <div class="container"></div>
           </div>
@@ -93,28 +120,39 @@
         <div class="popup">
           <span><i class="fa-solid fa-check"></i></span>
           <p>Thanks for your support!</p>
-          <p>Your pledge brings us one step closer to
-          sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an
-          email once our campaign is completed.</p>
-          <button class="button btn-one" id="ok">Got it!</button>
+          <p>
+            Your pledge brings us one step closer to sharing Mastercraft Bamboo
+            Monitor Riser worldwide. You will get an email once our campaign is
+            completed.
+          </p>
+          <button class="button btn-one" id="gotIt">Got it!</button>
+        </div>
+      </div>
+
+      <div class="alert-wrapper">
+        <div class="alert">
+          <h3>Wrong value.</h3>
+          <div>
+            <button class="button btn-one" id="ok">OK</button>
+          </div>
         </div>
       </div>
     </main>
 
     <script id="template-product" type="text/x-handlebars-template">
       {{#if donation}}
-        <div class="card" id="{{id}}">
-          <div class="box">
+        <div class='card' id='{{id}}'>
+          <div class='box box-donation'>
             <h3>{{title}}</h3>
             <p> Pledge ${{donation}} or more</p>
           </div>
           <p> {{description}}</p>
-          <div class="box">
-            <div class="amount">
+          <div class='box'>
+            <div class='amount'>
               <span>{{amount}}</span>
               <span>left</span>
             </div>
-            <button class="button btn-one back">Select Reward</button>
+            <button class='button btn-one back'>Select Reward</button>
           </div>
         </div>
       {{/if}}
@@ -125,10 +163,12 @@
         <div class="box">
           <div class="info">
             <input type="radio" name="product" class="radio-input" id="{{title}}">
-            <label for="{{title}}"><h4>{{title}}</h4></label>
-            {{#if donation}}
-              <p>Pledge ${{donation}} or more</p>
-            {{/if}}
+            <div class="label">
+              <label for="{{title}}"><h4>{{title}}</h4></label>
+              {{#if donation}}
+                <p>Pledge ${{donation}} or more</p>
+              {{/if}}
+            </div>
           </div>
           <div class="amount">
             <span>{{amount}}</span>
@@ -136,20 +176,21 @@
                 <span>left</span>
               {{/if}}
           </div>
+          <p>{{description}}</p>
         </div>
-        <p>{{description}}</p>
+
         <div class="support">
           <p>Enter your pledge</p>
           <div class="box">
             <span class="currency">$</span>
-            <input type="number" 
+            <input type="number"
             {{#if donation}}
-            min="{{donation}}" 
+            min="{{donation}}"
             placeholder={{donation}}
             {{else}}
             min="1"
             placeholder="1"
-            {{/if}} 
+            {{/if}}
             step="1" class="pledge">
             <button type="submit" class="button btn-one continue">Continue</button>
           </div>

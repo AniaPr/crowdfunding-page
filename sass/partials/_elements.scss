@@ -9,11 +9,14 @@
   align-items: center;
   font-family: $font-text;
   font-size: 0.9rem;
+  justify-content: center;
+  height: 40px;
+  max-width: 60%;
 }
 
 .btn-one {
   background: $color-main-light;
-  padding: 3% 6%;
+  padding: 0 8%;
 }
 
 .btn-one:hover {
@@ -48,13 +51,28 @@
 
 .fa-xmark {
   color: $color-light-gray;
-  position: absolute;
-  right: 20px;
-  top: 20px;
+  position: sticky;
+  left: 530px;
+  top: 22px;
   cursor: pointer;
+}
+
+.mobile-menu .fa-xmark {
+  color: white;
+  left: 95%;
+}
+
+.mobile-menu .fa-xmark:hover {
+  color: $color-light-gray;
 }
 
 .fa-xmark:hover {
   color: black;
   cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .btn-bookmark {
+    margin-left: 3%;
+  }
 }

@@ -12,6 +12,11 @@ nav {
   display: flex;
 }
 
+.fa-bars {
+  display: none;
+  cursor: pointer;
+}
+
 nav ul {
   list-style-type: none;
   display: flex;
@@ -27,4 +32,25 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: $color-light;
+}
+
+.mobile-menu ul li a {
+  color: black;
+}
+
+@media (max-width: 576px) {
+  header {
+    background-image: url('../../images/image-hero-mobile.jpg');
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .fa-bars {
+    display: block;
+    &.hide {
+      display: none;
+    }
+  }
 }

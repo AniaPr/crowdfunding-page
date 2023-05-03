@@ -36,17 +36,18 @@ class Product {
     );
     thisProduct.popupCards = document.querySelectorAll('.container .card');
     thisProduct.backThisProject = document.querySelector('.back-project');
-
     thisProduct.buttonsBack = document.querySelectorAll('.back');
-
     thisProduct.popups = document.querySelectorAll('.popup');
     thisProduct.thanks = document.querySelector('.thanks');
-    thisProduct.buttonGotIt = document.getElementById('ok');
+    thisProduct.buttonGotIt = document.getElementById('gotIt');
     thisProduct.buttonsContinue = document.querySelectorAll('.continue');
     thisProduct.support = document.querySelectorAll('.support');
     thisProduct.backers = document.querySelector('.backers');
-    thisProduct.totalAmount = document.querySelector('.money');
+    thisProduct.totalAmount = document.getElementById('money');
     thisProduct.progressBar = document.querySelector('.progress-bar');
+    thisProduct.alert = document.querySelector('.alert-wrapper');
+    thisProduct.menuIcon = document.querySelector('.fa-bars');
+    thisProduct.mobileMenu = document.querySelector('.mobile-menu');
   }
 
   totalBackers() {
@@ -91,13 +92,14 @@ class Product {
         thisProduct.popupCards.forEach((elem) => {
           if (elem.id === card.id) {
             elem.classList.add('active');
+            elem.scrollIntoView({ block: 'center', behavior: 'smooth' });
             const input = elem.querySelector('.radio-input');
             input.checked = true;
             if (elem.classList.contains('active')) {
               const support = elem.querySelector('.support');
               support.classList.add('show');
             }
-          } else elem.classList.remove('active');
+          } //else elem.classList.remove('active');
         });
       });
     });
@@ -115,6 +117,18 @@ class Product {
         }
       });
     });
+
+    thisProduct.menuIcon.addEventListener('click', () => {
+      thisProduct.mobileMenu.classList.add('active');
+      thisProduct.menuIcon.classList.add('hide');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fa-xmark')) {
+        thisProduct.mobileMenu.classList.remove('active');
+        thisProduct.menuIcon.classList.remove('hide');
+      }
+    });
   }
 
   actionContinue() {
@@ -125,13 +139,18 @@ class Product {
         let sum = parseFloat(
           thisProduct.totalAmount.innerHTML.replace(',', '')
         );
+        console.log(sum);
         let input = elem.closest('.box').querySelector('input');
         let newValue = 0;
         let placeholder = parseInt(input.placeholder);
         let value = parseInt(input.value);
 
         if (value < placeholder || value === 0 || isNaN(value)) {
-          alert(`Wrong value. Minimum amount is ${placeholder}$.`);
+          thisProduct.alert.classList.add('active');
+          document.getElementById('ok').addEventListener('click', () => {
+            thisProduct.alert.classList.remove('active');
+          });
+          console.log('wrong value');
           input.value = placeholder;
         } else if (value >= placeholder) {
           newValue = value;
@@ -183,12 +202,13 @@ class Product {
 
     thisProduct.popupCards.forEach((card) => {
       card.addEventListener('click', () => {
-        for (let card of thisProduct.popupCards) {
-          card.classList.remove('active');
-        }
         const input = card.querySelector('.radio-input');
         if (input.checked) {
+          for (let card of thisProduct.popupCards) {
+            card.classList.remove('active');
+          }
           card.classList.add('active');
+          card.scrollIntoView({ block: 'center', behavior: 'smooth' });
           for (let show of thisProduct.support) {
             const parent = show.closest('.card');
             if (parent.classList.contains('active')) {
@@ -206,12 +226,7 @@ class Product {
     for (const amount of thisProduct.amountWrapper) {
       if (amount.innerHTML === '0') {
         const parent = amount.closest('.card');
-        const input = parent.querySelector('.radio-input');
         const button = parent.querySelector('.button');
-
-        if (input != null) {
-          input.disabled = true;
-        }
 
         button.innerHTML = 'Out of stock';
         parent.classList.add('unavailable');

@@ -5,6 +5,7 @@
   width: 100%;
   display: flex;
   top: 0;
+  left: 0;
   visibility: hidden;
   z-index: 1;
   &.active {
@@ -36,16 +37,44 @@
   background: white;
   margin: auto;
   overflow: auto;
-  padding: 30px;
+  padding: 36px 24px 36px 36px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.back-project .popup {
+  padding-top: 0;
+}
+
 .thanks .popup {
   width: 55%;
   height: auto;
+  text-align: center;
+  & p:first-of-type {
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+}
+
+.mobile-menu .popup {
+  height: auto;
+  margin-top: 80px;
+  padding: 0;
+}
+
+.mobile-menu li {
+  padding: 23px 30px;
+  margin: 0;
+  width: 100%;
+  border-bottom: 2px solid $color-light-gray;
+}
+
+.mobile-menu li:last-child {
+  border-bottom: 0;
 }
 
 .popup > p:first-child {
@@ -58,6 +87,7 @@
   display: flex;
   justify-content: space-between;
   padding: 18px;
+  flex-wrap: wrap;
 }
 
 .info {
@@ -65,8 +95,29 @@
   flex-direction: row;
 }
 
-span:nth-child(2) {
+.label {
+  display: flex;
+  flex-direction: row;
+}
+
+.label p {
+  margin-left: 3%;
+  color: $color-main-light;
+}
+
+#text {
   color: #fff;
+}
+
+.icon {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 50px;
+  padding-bottom: 4px;
 }
 
 .support {
@@ -92,7 +143,6 @@ span:nth-child(2) {
 }
 .pledge {
   position: relative;
-  padding: 6%;
   border: 1.5px solid $color-main-light;
   border-radius: 10rem;
   width: 40%;
@@ -109,4 +159,73 @@ span:nth-child(2) {
   position: relative;
   left: 20px;
   z-index: 2;
+}
+
+.alert-wrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  border-radius: 5px;
+  visibility: hidden;
+  z-index: 1;
+  &.active {
+    visibility: visible;
+  }
+}
+
+.alert {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 400px;
+  margin: 3% auto;
+  padding: 5%;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 2px 2px 10px black;
+}
+
+.mobile-menu {
+  display: flex;
+}
+
+@media (max-width: 576px) {
+  .popup {
+    width: 90%;
+  }
+
+  .thanks .popup {
+    width: 90%;
+  }
+
+  #text {
+    display: none;
+  }
+
+  .options .box {
+    flex-direction: column;
+  }
+
+  .support.show {
+    flex-direction: column;
+  }
+
+  .support p {
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .support .box {
+    justify-content: center;
+  }
+
+  .label {
+    flex-direction: column;
+  }
+
+  .label h4 {
+    margin: auto;
+  }
 }
