@@ -88,18 +88,20 @@ class Product {
       button.addEventListener('click', () => {
         thisProduct.backThisProject.classList.add('active');
         const card = button.closest('.card');
+        document.querySelector('.back-project .popup').scroll({ top: 0 });
 
         thisProduct.popupCards.forEach((elem) => {
           if (elem.id === card.id) {
             elem.classList.add('active');
             elem.scrollIntoView({ block: 'center', behavior: 'smooth' });
+
             const input = elem.querySelector('.radio-input');
             input.checked = true;
             if (elem.classList.contains('active')) {
               const support = elem.querySelector('.support');
               support.classList.add('show');
             }
-          } //else elem.classList.remove('active');
+          }
         });
       });
     });
@@ -113,7 +115,9 @@ class Product {
           thisProduct.thanks.classList.remove('active');
           thisProduct.backThisProject.classList.remove('active');
           thisProduct.removeActiveClass();
-          thisProduct.progressBarAction();
+          setTimeout(() => {
+            thisProduct.progressBarAction();
+          }, 3000);
         }
       });
     });
@@ -139,7 +143,6 @@ class Product {
         let sum = parseFloat(
           thisProduct.totalAmount.innerHTML.replace(',', '')
         );
-        console.log(sum);
         let input = elem.closest('.box').querySelector('input');
         let newValue = 0;
         let placeholder = parseInt(input.placeholder);
@@ -150,12 +153,12 @@ class Product {
           document.getElementById('ok').addEventListener('click', () => {
             thisProduct.alert.classList.remove('active');
           });
-          console.log('wrong value');
           input.value = placeholder;
         } else if (value >= placeholder) {
           newValue = value;
           thisProduct.backThisProject.classList.remove('active');
           thisProduct.thanks.classList.add('active');
+          input.value = '';
           thisProduct.totalBackers();
         }
 

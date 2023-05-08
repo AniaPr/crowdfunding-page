@@ -49,23 +49,6 @@
   }
 }
 
-.fa-xmark {
-  color: $color-light-gray;
-  position: sticky;
-  left: 530px;
-  top: 22px;
-  cursor: pointer;
-}
-
-.mobile-menu .fa-xmark {
-  color: white;
-  left: 95%;
-}
-
-.mobile-menu .fa-xmark:hover {
-  color: $color-light-gray;
-}
-
 .fa-xmark:hover {
   color: black;
   cursor: pointer;

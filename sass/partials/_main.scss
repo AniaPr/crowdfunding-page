@@ -11,25 +11,27 @@ section {
   margin: auto;
   border-radius: 5px;
   margin-bottom: 10px;
-  padding: 36px;
-}
-
-section:first-child {
-  padding-top: 0;
-}
-
-section:first-child p {
-  justify-content: center;
-}
-
-.logo {
+  padding: 2rem;
   position: relative;
-  top: -1.5rem;
+  &:first-child {
+    padding-top: 0;
+    p {
+      justify-content: center;
+      margin: 0.75rem 0 1.25rem 0;
+    }
+  }
 }
 
-.logo img {
-  height: inherit;
-  width: inherit;
+.general {
+  .logo {
+    position: relative;
+    top: -24px;
+    height: 56px;
+    width: 56px;
+  }
+  .box {
+    padding: 0;
+  }
 }
 
 .stats {
@@ -43,42 +45,37 @@ section:first-child p {
   flex: 1;
   text-align: left;
   position: relative;
-  justify-content: center;
-}
-
-.elem > div {
-  font-weight: 700;
-  font-size: 25px;
-}
-
-.elem:nth-child(2)::before {
-  content: ' ';
-  display: flex;
-  flex-direction: column;
-  height: 0.5px;
-  width: 43px;
-  position: absolute;
-  left: 83%;
-  top: 36%;
-  background: $color-light-gray;
-  rotate: 90deg;
-}
-
-.elem:nth-child(2)::after {
-  content: ' ';
-  display: flex;
-  flex-direction: column;
-  height: 0.5px;
-  width: 43px;
-  position: absolute;
-  left: -36%;
-  top: 36%;
-  background: $color-light-gray;
-  rotate: 90deg;
-}
-
-.elem p {
-  margin-top: 7px;
+  p {
+    margin-top: 7px;
+  }
+  > div {
+    font-weight: 700;
+    font-size: 25px;
+  }
+  &:nth-child(2)::before {
+    content: ' ';
+    display: flex;
+    flex-direction: column;
+    height: 0.5px;
+    width: 43px;
+    position: absolute;
+    left: 83%;
+    top: 36%;
+    background: $color-light-gray;
+    rotate: 90deg;
+  }
+  &:nth-child(2)::after {
+    content: ' ';
+    display: flex;
+    flex-direction: column;
+    height: 0.5px;
+    width: 43px;
+    position: absolute;
+    left: -36%;
+    top: 36%;
+    background: $color-light-gray;
+    rotate: 90deg;
+  }
 }
 
 .money,
@@ -94,6 +91,7 @@ section:first-child p {
   border-radius: 10px;
   background: $color-light-gray;
   position: relative;
+  margin-top: 16px;
 }
 
 .progress-bar {
@@ -107,6 +105,9 @@ section:first-child p {
 
 .options {
   text-align: left;
+  > p {
+    margin: 26px 0;
+  }
 }
 
 .card {
@@ -120,10 +121,7 @@ section:first-child p {
 
 .box-donation p {
   color: $color-main-light;
-}
-
-.box > p {
-  margin: 0 0 0 33px;
+  margin-left: 30px;
 }
 
 .products .card > p {
@@ -131,9 +129,16 @@ section:first-child p {
   margin: 0;
 }
 
-.container .card > p {
-  padding: 0 18px 18px;
-  margin: 0 0 16px 33px;
+.container {
+  .card {
+    .box {
+      flex-wrap: wrap;
+    }
+    > p {
+      padding: 0 18px 18px;
+      margin: 0 0 16px 33px;
+    }
+  }
 }
 
 .unavailable {
@@ -146,22 +151,21 @@ section:first-child p {
   display: flex;
   align-items: center;
   margin-bottom: 7px;
-}
-
-.amount span:nth-child(1) {
-  color: black;
-  font-size: 24px;
-  font-weight: 700;
-  padding-right: 7%;
-}
-
-.amount span:nth-child(2) {
-  color: $color-light-gray;
+  span:nth-child(1) {
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+    padding-right: 7%;
+  }
+  span:nth-child(2) {
+    color: $color-light-gray;
+  }
 }
 
 @media (max-width: 576px) {
   section {
     width: 90%;
+    padding: 1.5rem;
   }
 
   .stats {
@@ -170,30 +174,26 @@ section:first-child p {
 
   .elem {
     align-items: center;
+    &:nth-child(2)::before {
+      width: 72px;
+      left: auto;
+      rotate: 0deg;
+      top: -35%;
+    }
+    &:nth-child(2)::after {
+      width: 72px;
+      left: auto;
+      rotate: 0deg;
+      top: 135%;
+    }
   }
 
-  .elem:nth-child(2)::before {
-    width: 72px;
-    left: auto;
-    rotate: 0deg;
-    top: -35%;
+  .box-donation p {
+    margin-left: 0;
   }
+}
 
-  .elem:nth-child(2)::after {
-    width: 72px;
-    left: auto;
-    rotate: 0deg;
-    top: 100%;
-  }
-
-  .bar {
-    margin-top: 3%;
-  }
-
-  .card .box p {
-    margin: 10px 0;
-  }
-
+@media (max-width: 768px) {
   .container .amount {
     order: 1;
   }
