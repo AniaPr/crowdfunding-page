@@ -27,15 +27,6 @@
   }
 }
 
-@keyframes closePopup {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
 .popup {
   width: 70%;
   height: 80%;
@@ -241,6 +232,12 @@
   }
 }
 
+@media (max-width: 400px) {
+  #text {
+    display: none;
+  }
+}
+
 @media (max-width: 576px) {
   .popup {
     width: 90%;
@@ -249,10 +246,6 @@
 
   .thanks .popup {
     width: 90%;
-  }
-
-  #text {
-    display: none;
   }
 
   .options .box {
