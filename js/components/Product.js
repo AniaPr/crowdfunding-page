@@ -113,7 +113,7 @@ class Product {
           thisProduct.removeActiveClass();
         } else if (event.target === thisProduct.buttonGotIt) {
           thisProduct.thanks.classList.remove('active');
-          thisProduct.thanks.querySelector('.popup').classList.add('close');
+          //thisProduct.thanks.querySelector('.popup').classList.add('close');
           thisProduct.backThisProject.classList.remove('active');
           thisProduct.removeActiveClass();
           setTimeout(() => {
@@ -134,6 +134,14 @@ class Product {
         thisProduct.menuIcon.classList.remove('hide');
       }
     });
+
+    for (let overlay of document.querySelectorAll('.overlay')) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+        }
+      });
+    }
   }
 
   actionContinue() {
