@@ -113,11 +113,12 @@ class Product {
           thisProduct.removeActiveClass();
         } else if (event.target === thisProduct.buttonGotIt) {
           thisProduct.thanks.classList.remove('active');
+          thisProduct.thanks.querySelector('.popup').classList.add('close');
           thisProduct.backThisProject.classList.remove('active');
           thisProduct.removeActiveClass();
           setTimeout(() => {
             thisProduct.progressBarAction();
-          }, 3000);
+          }, 2500);
         }
       });
     });

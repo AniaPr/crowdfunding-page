@@ -12,6 +12,18 @@
     visibility: visible;
     height: 100%;
     width: 100%;
+    .popup {
+      animation: openPopup 0.8s;
+    }
+  }
+}
+
+@keyframes openPopup {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -68,7 +80,6 @@
 
 .back-project {
   .popup {
-    transform: scale(0.5);
     padding: 0 20px 32px 32px;
     .icon {
       background-color: white;
@@ -98,12 +109,6 @@
       }
     }
   }
-  &.active {
-    .popup {
-      transform: scale(1);
-      transition: all 0.8s;
-    }
-  }
 }
 
 .thanks {
@@ -112,8 +117,7 @@
     width: 55%;
     height: auto;
     text-align: center;
-    transform: scale(0.5);
-    transition: all 0.8s;
+    transform: scale(1);
     i {
       background: $color-main-light;
       height: 60px;
@@ -136,10 +140,9 @@
     .btn-one {
       margin-top: 18px;
     }
-  }
-  &.active {
-    .popup {
-      transform: scale(1);
+    &.close {
+      transform: scale(0.5);
+      transition: all 0.8s;
     }
   }
 }
@@ -209,7 +212,7 @@
   top: 0;
   border-radius: 5px;
   visibility: hidden;
-  z-index: 1;
+  z-index: 2;
   &.active {
     visibility: visible;
   }
