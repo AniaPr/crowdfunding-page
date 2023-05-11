@@ -52,8 +52,14 @@
             strain.
           </p>
           <div class="box">
-            <button class="button btn-one back">Back this project</button>
-            <button type="button" class="button btn-bookmark" id="bookmark">
+            <button class="button btn-one back" aria-label="back this project">
+              Back this project
+            </button>
+            <button
+              type="button"
+              class="button btn-bookmark"
+              id="bookmark"
+              aria-labelledby="text">
               <i class="fa-solid fa-bookmark" id="icon"></i>
               <span id="text">Bookmark</span>
             </button>
@@ -128,7 +134,9 @@
             Monitor Riser worldwide. You will get an email once our campaign is
             completed.
           </p>
-          <button class="button btn-one" id="gotIt">Got it!</button>
+          <button class="button btn-one" id="gotIt" aria-label="got it">
+            Got it!
+          </button>
         </div>
       </div>
 
@@ -136,7 +144,7 @@
         <div class="alert">
           <h3>Wrong value.</h3>
           <div>
-            <button class="button btn-one" id="ok">OK</button>
+            <button class="button btn-one" id="ok" aria-label="ok">OK</button>
           </div>
         </div>
       </div>
@@ -155,7 +163,10 @@
               <span>{{amount}}</span>
               <span>left</span>
             </div>
-            <button class='button btn-one back'>Select Reward</button>
+            <button
+              class='button btn-one back'
+              aria-label='select reward'
+            >Select Reward</button>
           </div>
         </div>
       {{/if}}
@@ -195,7 +206,7 @@
             placeholder="1"
             {{/if}}
             step="1" class="pledge">
-            <button type="submit" class="button btn-one continue">Continue</button>
+            <button type="submit" class="button btn-one continue" aria-label="continue">Continue</button>
           </div>
         </div>
       </div>
